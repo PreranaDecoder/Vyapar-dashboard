@@ -1,0 +1,17 @@
+.notifications {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+
+.notifications ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notifications li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}

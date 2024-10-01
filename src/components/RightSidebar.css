@@ -1,0 +1,81 @@
+.right-sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  height: 100vh;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  right: 0;
+  top: 0;
+  overflow-y: auto;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.notification-list,
+.activity-list,
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.notification-list li,
+.activity-list li,
+.contact-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.notification-list li:hover,
+.activity-list li:hover,
+.contact-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.notification-icon,
+.activity-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.notification-list li div,
+.activity-list li div {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-list li div p,
+.activity-list li div p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.notification-list li div span,
+.activity-list li div span {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+}
+
+.contact-list li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
