@@ -26,11 +26,12 @@ const dataLine = [
 ];
 
 const dataBar = [
-  { name: "Linux", value: 12 },
-  { name: "Mac", value: 18 },
-  { name: "iOS", value: 22 },
-  { name: "Windows", value: 15 },
-  { name: "Android", value: 19 },
+  { name: "Linux", value: 12, color: "#95A4FC" },
+  { name: "Mac", value: 18, color: "#BAEDBD" },
+  { name: "Window", value: 19, color: "#B1E3FF" },
+  { name: "iOS", value: 22, color: "#1C1C1C" },
+  { name: "Android", value: 15, color: "#A8C5DA" },
+  { name: "Other", value: 20, color: "#A1E3CB" },
 ];
 
 const pieData = [
@@ -41,21 +42,22 @@ const pieData = [
 ];
 
 const marketingData = [
-  { name: "Jan", value: 20 },
-  { name: "Feb", value: 25 },
-  { name: "Mar", value: 30 },
-  { name: "Apr", value: 28 },
-  { name: "May", value: 35 },
-  { name: "Jun", value: 40 },
-  { name: "Jul", value: 35 },
-  { name: "Aug", value: 30 },
-  { name: "Sep", value: 35 },
-  { name: "Oct", value: 40 },
-  { name: "Nov", value: 35 },
-  { name: "Dec", value: 40 },
+  { name: "Jan", value: 20, color: "#95A4FC" },
+  { name: "Feb", value: 25, color: "#BAEDBD" },
+  { name: "Mar", value: 30, color: "#1C1C1C" },
+  { name: "Apr", value: 28, color: "#B1E3FF" },
+  { name: "May", value: 35, color: "#B1E3FF" },
+  { name: "Jun", value: 40, color: "#A1E3CB" },
+  { name: "July", value: 20, color: "#95A4FC" },
+  { name: "Aug", value: 25, color: "#BAEDBD" },
+  { name: "Sept", value: 30, color: "#1C1C1C" },
+  { name: "Oct", value: 28, color: "#B1E3FF" },
+  { name: "Nov", value: 35, color: "#B1E3FF" },
+  { name: "Dec", value: 40, color: "#A1E3CB" },
 ];
 
-// Mock data for traffic by website
+const COLORS = ["#95A4FC", "#BAEDBD", "#1C1C1C", "#B1E3FF"];
+
 const websiteTrafficData = [
   { name: "Instagram", traffic: 80 },
   { name: "Google", traffic: 50 },
@@ -65,8 +67,6 @@ const websiteTrafficData = [
   { name: "Twitter", traffic: 25 },
   { name: "Tumblr", traffic: 15 },
 ];
-
-const COLORS = ["#8884d8", "#82ca9d", "#ffc658", "#ff8042"];
 
 const Dashboard = () => {
   const [selectedDay, setSelectedDay] = useState("Today");
@@ -155,7 +155,6 @@ const Dashboard = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-
         {/* Traffic by Website */}
         <div className="traffic-by-website">
           <h3>Traffic by Website</h3>
@@ -176,16 +175,22 @@ const Dashboard = () => {
       </div>
 
       {/* Traffic by Device and Location */}
-      <div className="charts-container">
+      <div className="charts-container-1">
         <div className="bar-chart">
           <h3>Traffic by Device</h3>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={dataBar}>
+            <BarChart data={dataBar} barSize={20}>
+              {" "}
+              {/* Adjusted barSize */}
               <XAxis dataKey="name" stroke="#ccc" />
               <YAxis stroke="#ccc" />
               <Tooltip />
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <Bar dataKey="value" fill="#82ca9d" />
+              <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                {dataBar.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Bar>
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -199,7 +204,10 @@ const Dashboard = () => {
                 dataKey="value"
                 cx="50%"
                 cy="50%"
+                innerRadius={60}
                 outerRadius={80}
+                paddingAngle={5}
+                fill="#8884d8"
               >
                 {pieData.map((entry, index) => (
                   <Cell
@@ -211,6 +219,26 @@ const Dashboard = () => {
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>
+
+          {/* Location names and frequencies */}
+          <ul className="location-list">
+            {pieData.map((entry, index) => (
+              <li key={`location-${index}`}>
+                <span
+                  className="location-color"
+                  style={{
+                    backgroundColor: COLORS[index % COLORS.length],
+                    display: "inline-block",
+                    width: "10px",
+                    height: "10px",
+                    marginRight: "10px",
+                    borderRadius: "5px",
+                  }}
+                ></span>
+                {entry.name}: {entry.value}%
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -218,12 +246,18 @@ const Dashboard = () => {
       <div className="line-chart">
         <h3>Marketing & SEO</h3>
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={marketingData}>
+          <BarChart data={marketingData} barSize={20}>
+            {" "}
+            {/* Adjusted barSize */}
             <XAxis dataKey="name" stroke="#ccc" />
             <YAxis stroke="#ccc" />
             <Tooltip />
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-            <Bar dataKey="value" fill="#82ca9d" />
+            <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+              {marketingData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
