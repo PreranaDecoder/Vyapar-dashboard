@@ -1,5 +1,80 @@
+/* Ensure there's no margin or padding in the body and html */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  position: sticky; /* Ensures the navbar stays at the top */
+  top: 0; /* Keeps the navbar at the top of the viewport */
+  z-index: 10; /* Ensures the navbar stays above other content */
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+.breadcrumbs span {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.breadcrumbs .active {
+  font-weight: bold;
+  color: #000;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 20px;
+}
+
+.search-box input {
+  border: none;
+  background: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+.icon {
+  margin-left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #fcbd01;
+}
+
+/*Dashboard css*/
 .dashboard {
-  padding: 20px;
+  padding: 25px;
   background-color: #f7f8fc;
   min-height: 100vh;
 }

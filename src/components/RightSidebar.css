@@ -4,27 +4,43 @@
   background-color: #fff;
   height: 100vh;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #ddd;
   position: fixed;
   right: 0;
   top: 0;
   overflow-y: auto;
+  z-index: 9999; /* Ensure it's on top */
 }
 
 .section {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-.section h4 {
-  font-size: 1.2rem;
+.dropdown-header {
+  cursor: pointer;
   font-weight: bold;
-  margin-bottom: 15px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  margin-left: 10px;
+  transition: transform 0.2s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg); /* Rotates arrow down when open */
 }
 
 .notification-list,
 .activity-list,
 .contact-list {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .notification-list li,
@@ -68,14 +84,18 @@
   color: #888;
 }
 
-.contact-list li {
-  display: flex;
-  align-items: center;
-}
-
+/* Styling for contacts */
 .contact-list li img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+h4 {
+  transition: color 0.2s;
+}
+
+h4:hover {
+  color: #fcbd01;
 }

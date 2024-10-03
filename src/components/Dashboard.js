@@ -14,6 +14,16 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faSearch,
+  faCog,
+  faBell,
+  faSyncAlt,
+  faMoon,
+  faColumns,
+} from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
 
 // Mock data for charts
@@ -58,6 +68,7 @@ const marketingData = [
 
 const COLORS = ["#95A4FC", "#BAEDBD", "#1C1C1C", "#B1E3FF"];
 
+// Mock data for traffic by website (this was missing)
 const websiteTrafficData = [
   { name: "Instagram", traffic: 80 },
   { name: "Google", traffic: 50 },
@@ -68,6 +79,30 @@ const websiteTrafficData = [
   { name: "Tumblr", traffic: 15 },
 ];
 
+// Navbar Component
+const Navbar = () => {
+  return (
+    <div className="navbar">
+      <div className="breadcrumbs">
+        <FontAwesomeIcon icon={faHome} />
+        <span>Dashboards</span> /<span className="active">Default</span>
+      </div>
+      <div className="actions">
+        <div className="search-box">
+          <FontAwesomeIcon icon={faSearch} />
+          <input type="text" placeholder="Search" />
+        </div>
+        <FontAwesomeIcon icon={faMoon} className="icon" />
+        <FontAwesomeIcon icon={faSyncAlt} className="icon" />
+        <FontAwesomeIcon icon={faCog} className="icon" />
+        <FontAwesomeIcon icon={faBell} className="icon" />
+        <FontAwesomeIcon icon={faColumns} className="icon" />
+      </div>
+    </div>
+  );
+};
+
+// Dashboard Component
 const Dashboard = () => {
   const [selectedDay, setSelectedDay] = useState("Today");
 
@@ -79,6 +114,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
+      <Navbar />
+
       {/* Dropdown for Day Selection */}
       <div className="header">
         <h3>
@@ -180,8 +217,6 @@ const Dashboard = () => {
           <h3>Traffic by Device</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={dataBar} barSize={20}>
-              {" "}
-              {/* Adjusted barSize */}
               <XAxis dataKey="name" stroke="#ccc" />
               <YAxis stroke="#ccc" />
               <Tooltip />
@@ -247,8 +282,6 @@ const Dashboard = () => {
         <h3>Marketing & SEO</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={marketingData} barSize={20}>
-            {" "}
-            {/* Adjusted barSize */}
             <XAxis dataKey="name" stroke="#ccc" />
             <YAxis stroke="#ccc" />
             <Tooltip />

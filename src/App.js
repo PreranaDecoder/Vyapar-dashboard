@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./components/Dashboard";
 import RightSidebar from "./components/RightSidebar";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import "./App.css";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="app">
       <Sidebar />
       <div className="main-content">
-        <Navbar />
+        {/* <Navbar /> */}
         <Dashboard />
       </div>
       <RightSidebar />
